@@ -1,4 +1,6 @@
-package blackjack
+package blackjack.domain
+
+import kotlin.random.Random
 
 enum class Denomination(
     val number: Int
@@ -15,5 +17,11 @@ enum class Denomination(
     TEN(10),
     KING(10),
     QUEEN(10),
-    JACK(10)
+    JACK(10);
+
+    companion object {
+        fun getRandom() : Denomination {
+            return values()[Random.nextInt(values().size-1)]
+        }
+    }
 }

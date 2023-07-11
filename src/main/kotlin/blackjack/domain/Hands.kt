@@ -1,26 +1,29 @@
-package blackjack
+package blackjack.domain
 
-class Hands(
+data class Hands(
     private val cards: List<PlayingCard>
 ) {
     val isBlackjack: Boolean
-        get() = calculate() == BLACKJACK_SCORE
+        get() = calculate().isBlackjack
     val isBust: Boolean
-        get() = calculate() > BLACKJACK_SCORE
+        get() = calculate().isBust
 
-    private fun calculate(): Int {
+
+    private fun calculate(): Score {
         val hasAce = _cards.any { it.isAce() }
-        var score = cards.sumOf { it.score() }
-        if(hasAce) {
-           score += ADDITIONAL_SCORE
-        }
-        return score
+        val score = Score(_cards.sumOf { it.score() })
+        return score.addTenIfAce(hasAce)
     }
     private val _cards: MutableList<PlayingCard> = cards.toMutableList()
 
     fun add(card: PlayingCard) {
         _cards.add(card)
     }
+
+    fun show(): String {
+        return cards.joinToString(",") { it.show() }
+    }
+
 
     companion object {
         private const val BLACKJACK_SCORE = 21

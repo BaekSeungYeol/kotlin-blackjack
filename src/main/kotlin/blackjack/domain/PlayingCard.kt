@@ -1,6 +1,6 @@
-package blackjack
+package blackjack.domain
 
-class PlayingCard(
+data class PlayingCard(
     private val denomination: Denomination,
     val suit: Suit
 ) {
@@ -8,6 +8,9 @@ class PlayingCard(
     fun isAce(): Boolean = denomination == Denomination.ACE
     fun score(): Int = denomination.number
 
+    fun show(): String {
+        return "(${denomination.name})${suit.name}"
+    }
     companion object {
         fun of(denomination: Denomination, suit: Suit) : PlayingCard {
             return PlayingCard(denomination, suit)

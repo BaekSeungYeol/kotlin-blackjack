@@ -1,4 +1,0 @@
-package blackjack
-
-interface State {
-}

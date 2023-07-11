@@ -1,10 +1,10 @@
-package blackjack
+package blackjack.domain
 
 class Hit(
     private val hands: Hands
 ): Running() {
 
-    fun draw(anotherCard: PlayingCard): State {
+    override fun draw(anotherCard: PlayingCard): State {
         hands.add(anotherCard)
 
         if(hands.isBlackjack) {

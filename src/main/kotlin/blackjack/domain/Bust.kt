@@ -1,4 +1,5 @@
-package blackjack
+package blackjack.domain
 
 class Bust: Finished() {
+
 }

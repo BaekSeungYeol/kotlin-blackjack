@@ -1,4 +1,4 @@
-package blackjack
+package blackjack.domain
 
 class FirstHand(
     private val playingCard1: PlayingCard,
